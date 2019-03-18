@@ -1,21 +1,34 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Hotel
 {
+    /// <summary>
+    /// Хэш-таблица
+    /// </summary>
     public class Hashtable
     {
+        /// <summary>
+        /// Массив постояльцев
+        /// </summary>
         Guest[] table;
+
+        /// <summary>
+        /// Размар массива
+        /// </summary>
         const int size = 10;
+
+        /// <summary>
+        /// Таблица пуста?
+        /// </summary>
         bool isEmpty = true;
         int count = 0;
 
         public bool IsEmpty { get { return isEmpty; } }
 
-        // алгоритм поиска
+        /// <summary>
+        /// Алгоритм поиска
+        /// </summary>
+        /// <param name="pat"></param>
         public void SearchString(string pat)
         {
             Program.guests.Clear();
@@ -112,7 +125,12 @@ namespace Hotel
                 return;
             }
         }
-        // удаление элемента
+
+        /// <summary>
+        /// Удаление элемента
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
         public bool Remove(long key)
         {
             table = Program.table;
@@ -157,7 +175,12 @@ namespace Hotel
                 return false;
             }
         }
-        // Поиск
+
+        /// <summary>
+        /// Поиск в хэш-таблице
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
         public bool Find(long key)
         {
             table = Program.table;
@@ -188,7 +211,12 @@ namespace Hotel
             }
             return false;
         }
-        // Поиск с возвратом найденного элемента
+
+        /// <summary>
+        /// Поиск в хэш-таблице
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
         public Guest FindGuest(long key)
         {
             table = Program.table;
@@ -218,7 +246,10 @@ namespace Hotel
                     }
                 }
         }
-        // Вывод на экран элементов
+
+        /// <summary>
+        /// Вывод всех элементов в консоль
+        /// </summary>
         public void Print()
         {
             Guest current = null;

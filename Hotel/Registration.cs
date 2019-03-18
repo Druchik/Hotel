@@ -1,26 +1,58 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Hotel
 {
+    /// <summary>
+    /// Регистрация
+    /// </summary>
     public class Registration
     {
-        public string pass_num; // паспорт
-        public string room_num; // номер отеля
-        public string chekIn; // дата вселения
-        public string chekOut; // дата выселения
-        public Registration next; // ссылка на следующий объект двусвязного списка
-        public Registration prev; // ссылка на предыдущий объект двусвязного списка
+        /// <summary>
+        /// Паспорт
+        /// </summary>
+        public string pass_num;
+        
+        /// <summary>
+        /// номер отеля
+        /// </summary>
+        public string room_num;
 
+        /// <summary>
+        /// Дата вселения постояльца
+        /// </summary>
+        public string chekIn;
+
+        /// <summary>
+        /// Дата выселения постояльца
+        /// </summary>
+        public string chekOut; // дата выселения
+
+        /// <summary>
+        /// Ссылка на следующий объект
+        /// </summary>
+        public Registration next;
+
+        /// <summary>
+        /// Ссылка на предыдущий объект
+        /// </summary>
+        public Registration prev;
+
+        /// <summary>
+        /// Изменение типа
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
         public long Convert(string str)
         {
             string num = str.Remove(4, 1);
             return long.Parse(num);
         }
 
+        /// <summary>
+        /// Ввод номера отеля
+        /// </summary>
+        /// <returns></returns>
         public string InputRoomNumber()
         {
             string result = "";
@@ -58,6 +90,10 @@ namespace Hotel
             return result;
         }
 
+        /// <summary>
+        /// Ввод паспорта
+        /// </summary>
+        /// <returns></returns>
         public string InputPassportNumber()
         {
             string result = "";

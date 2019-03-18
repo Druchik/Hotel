@@ -1,15 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Hotel
 {
     class AVL
     {
+        /// <summary>
+        /// Список комнат в отеле
+        /// </summary>
         public static List<Hotel_room> h_rooms = new List<Hotel_room>();
 
+        /// <summary>
+        /// Класс номер(комната) в отеле
+        /// </summary>
         public class Hotel_room
         {
             public string room_number; // номер отеля
@@ -22,7 +26,10 @@ namespace Hotel
         }
         Hotel_room root;
 
-        // алгоритм поиска
+        /// <summary>
+        /// Алгоритм поиска
+        /// </summary>
+        /// <param name="pat"> Слово для поиска </param>
         public void SearchString(string pat)
         {
             h_rooms.Clear();
@@ -34,7 +41,13 @@ namespace Hotel
             SearchString(root, m, badChar, pat);
         }
 
-        // алгоритм поиска БМ
+        /// <summary>
+        /// Алгоритм поиска БМ
+        /// </summary>
+        /// <param name="current"> Комната отеля </param>
+        /// <param name="m"></param>
+        /// <param name="badChar"></param>
+        /// <param name="pat"> Слово для поиска </param>
         private void SearchString(Hotel_room current, int m, int[] badChar, string pat)
         {
             
@@ -78,7 +91,11 @@ namespace Hotel
             for (i = 0; i < size; i++)
                 badChar[(int)str[i]] = i;
         }
-        // Ввод только цифр
+
+        /// <summary>
+        /// Ввод только цифр
+        /// </summary>
+        /// <returns></returns>
         public int InputParseDigital()
         {
             int num;
@@ -91,7 +108,11 @@ namespace Hotel
             }
             return num;
         }
-        // Ввод № гостиничного номера
+
+        /// <summary>
+        /// Ввод № гостиничного номера
+        /// </summary>
+        /// <returns></returns>
         public string InputRoomNumber()
         {
             string result = "";
@@ -129,17 +150,29 @@ namespace Hotel
             return result;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="room_number"></param>
+        /// <returns></returns>
         public int Convertum(string room_number)
         {
             string rn = room_number.Remove(0, 1);
             return Convert.ToInt32(rn);
         }
-        // Прямой обход дерева
+
+        /// <summary>
+        /// Прямой обход дерева
+        /// </summary>
         public void PostOrderTraversal()
         {
             PostOrderTraversal(root);
         }
 
+        /// <summary>
+        /// Прямой обход дерева
+        /// </summary>
+        /// <param name="node"> Комната отеля </param>
         private void PostOrderTraversal(Hotel_room node)
         {
             //Console.WriteLine("Номер комнаты\t Количество комнат\t Количество мест\t Наличие санузла");
@@ -154,7 +187,11 @@ namespace Hotel
                 PostOrderTraversal(node.right);
             }
         }
-        // Ввод данных
+
+        /// <summary>
+        /// Ввод данных
+        /// </summary>
+        /// <returns></returns>
         public Hotel_room InputData()
         {
             Hotel_room new_room = new Hotel_room();
@@ -202,7 +239,11 @@ namespace Hotel
             }
             return new_room;
         }
-        // Добавление данных в структуру
+
+        /// <summary>
+        /// Добавление данных в структуру
+        /// </summary>
+        /// <param name="newItem"> Новый номер отеля </param>
         public void Add(Hotel_room newItem/*string room_number, int rooms, int places, string equipment, bool toilet*/)
         {
             //Hotel_room newItem = new Hotel_room();
@@ -216,6 +257,12 @@ namespace Hotel
             }
         }
 
+        /// <summary>
+        /// Рекурсивная вставка
+        /// </summary>
+        /// <param name="current"></param>
+        /// <param name="n"></param>
+        /// <returns></returns>
         private Hotel_room RecursiveInsert(Hotel_room current, Hotel_room n)
         {
             if (current == null)
@@ -235,7 +282,12 @@ namespace Hotel
             }
             return current;
         }
-        // балансировка
+
+        /// <summary>
+        /// Балансировка дерева
+        /// </summary>
+        /// <param name="current"></param>
+        /// <returns></returns>
         private Hotel_room Balance_Tree(Hotel_room current)
         {
             int b_factor = Balance_Factor(current);
@@ -263,18 +315,33 @@ namespace Hotel
             }
             return current;
         }
-        // Проверка на пустоту
+
+        /// <summary>
+        /// Проверка на пустоту
+        /// </summary>
+        /// <returns></returns>
         public bool IsEmpty()
         {
             if (root == null)
                 return true;
             return false;
         }
-        // Удаление объекта
+
+        /// <summary>
+        /// Удаление
+        /// </summary>
+        /// <param name="target"></param>
         public void Delete(string target)
         {
             root = Delete(root, target);
         }
+
+        /// <summary>
+        /// Удаление
+        /// </summary>
+        /// <param name="current"></param>
+        /// <param name="target"></param>
+        /// <returns></returns>
         private Hotel_room Delete(Hotel_room current, string target)
         {
             Hotel_room parent;
@@ -344,7 +411,11 @@ namespace Hotel
             return current;
         }
 
-        // Поиск
+        /// <summary>
+        /// Поиск
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
         public Hotel_room Find(string str)
         {
             return Find(root, str);
@@ -371,7 +442,11 @@ namespace Hotel
             return null;
         }
 
-        // поиск введенного № комнаты в дереве
+        /// <summary>
+        /// Поиск введенного № комнаты в дереве
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
         public bool Contains(string str)
         {
             return Contains(root, str);
@@ -398,7 +473,12 @@ namespace Hotel
             }
             return false;
         }
-        // поиск введенного № комнаты с числовым значением в дереве
+
+        /// <summary>
+        /// Поиск введенного № комнаты с числовым значением в дереве
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
         public bool ContainsNum(string str)
         {
             return ContainsNum(root, str);
@@ -425,7 +505,12 @@ namespace Hotel
             }
             return false;
         }
-        // уменьшение свободных мест
+
+        /// <summary>
+        /// Уменьшение свободных мест
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
         public bool ChangeFreePlaces(string str)
         {
             return ChangeFreePlaces(root, str);
@@ -465,11 +550,22 @@ namespace Hotel
             return false;
         }
 
+        /// <summary>
+        /// Получение максимального
+        /// </summary>
+        /// <param name="l"></param>
+        /// <param name="r"></param>
+        /// <returns></returns>
         private int Max(int l, int r)
         {
             return l > r ? l : r;
         }
-        // Получение "веса"
+
+        /// <summary>
+        /// Получение "веса"
+        /// </summary>
+        /// <param name="current"></param>
+        /// <returns></returns>
         private int GetHeight(Hotel_room current)
         {
             int height = 0;

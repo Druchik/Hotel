@@ -9,7 +9,10 @@ namespace Hotel
 {
     class CircularDoublyLinkedList : IEnumerable
     {
-        Registration head; // начало списка ("голова")
+        /// <summary>
+        /// Начало списка("голова")
+        /// </summary>
+        Registration head;
         int count; // число элементов
 
             // сортировка списка пузырьком
@@ -41,8 +44,10 @@ namespace Hotel
             //return mas;
             }*/
 
-        // добавление записи
-
+        /// <summary>
+        /// Добавление в список
+        /// </summary>
+        /// <param name="node"></param>
         public void Add(Registration node)
         {
             //Registration node = new Registration();
@@ -66,8 +71,11 @@ namespace Hotel
             //    BubbleSort();
         }
 
-        // удаление элемента
-
+        /// <summary>
+        /// Удаление из списка
+        /// </summary>
+        /// <param name="num"></param>
+        /// <returns></returns>
         public bool Remove(string num)
         {
             Registration current = head;
@@ -107,12 +115,20 @@ namespace Hotel
         public int Count { get { return count; } }
         public bool IsEmpty { get { return count == 0; } }
 
+        /// <summary>
+        /// Очистка списка
+        /// </summary>
         public void Clear()
         {
             head = null;
             count = 0;
         }
 
+        /// <summary>
+        /// Поиск номера пасспорта в списке
+        /// </summary>
+        /// <param name="num"></param>
+        /// <returns></returns>
         public Registration FindPassport(string num)
         {
             Registration current = head;
@@ -128,6 +144,10 @@ namespace Hotel
             return null;
         }
 
+        /// <summary>
+        /// Поиск комнат отеля
+        /// </summary>
+        /// <param name="num"></param>
         public void FindRooms(string num)
         {
             Program.rooms.Clear();
